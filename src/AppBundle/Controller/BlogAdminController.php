@@ -21,7 +21,7 @@ class BlogAdminController extends Controller
             ->getRepository('AppBundle:Blog')
             ->findAll();
 
-        return $this->render('', array(
+        return $this->render(':admin/blog:list.html.twig', array(
             'blogs' => $blogs
         ));
     }
@@ -29,7 +29,7 @@ class BlogAdminController extends Controller
     /**
      * @Route("/blog/new", name="admin_blog_new")
      */
-    public function indexAction(Request $request)
+    public function newAction(Request $request)
     {
         $form = $this->createForm(BlogEntryFormType::class);
 

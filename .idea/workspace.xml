@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="22f1b5cb-a3aa-44ba-b07e-c0c9722751e5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/blog.iml" afterPath="$PROJECT_DIR$/.idea/blog.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/php.xml" afterPath="$PROJECT_DIR$/.idea/php.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Docker/logs/nginx/symfony_access.log" afterPath="$PROJECT_DIR$/Docker/logs/nginx/symfony_access.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/AppKernel.php" afterPath="$PROJECT_DIR$/app/AppKernel.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/config.yml" afterPath="$PROJECT_DIR$/app/config/config.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/BlogAdminController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/BlogAdminController.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -46,15 +40,30 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BlogAdminController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BlogAdminController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/BlogAdminController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="7" lean-forward="true" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
+            <state relative-caret-position="795">
+              <caret line="49" column="5" lean-forward="false" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
               <folding>
                 <element signature="e#40#77#0#PHP" expanded="true" />
                 <element signature="e#487#503#1#PHP" expanded="true" />
-                <element signature="e#1153#1180#0#PHP" expanded="true" />
+                <element signature="e#560#588#0#PHP" expanded="true" />
+                <element signature="e#1177#1204#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="list.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/admin/blog/list.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="23" column="29" lean-forward="true" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
+              <folding>
+                <element signature="e#12#26#0#Twig" expanded="true" />
+                <element signature="e#180#226#0#HTML" expanded="true" />
+                <element signature="e#608#614#1#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -102,6 +111,7 @@
         <option value="$PROJECT_DIR$/app/config/config.yml" />
         <option value="$PROJECT_DIR$/src/AppBundle/Form/BlogEntryFormType.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/BlogAdminController.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/admin/blog/list.html.twig" />
       </list>
     </option>
   </component>
@@ -312,12 +322,12 @@
       <workItem from="1505224041747" duration="102000" />
       <workItem from="1505284189848" duration="3584000" />
       <workItem from="1505288534957" duration="11290000" />
-      <workItem from="1505310433735" duration="11324000" />
+      <workItem from="1505310433735" duration="12705000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26410000" />
+    <option name="totallyTimeSpent" value="27791000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="38" y="584" width="1368" height="783" extended-state="6" />
@@ -545,12 +555,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/BlogAdminController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="7" lean-forward="true" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
+        <state relative-caret-position="795">
+          <caret line="49" column="5" lean-forward="false" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
           <folding>
             <element signature="e#40#77#0#PHP" expanded="true" />
             <element signature="e#487#503#1#PHP" expanded="true" />
-            <element signature="e#1153#1180#0#PHP" expanded="true" />
+            <element signature="e#560#588#0#PHP" expanded="true" />
+            <element signature="e#1177#1204#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/admin/blog/list.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="29" lean-forward="true" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
+          <folding>
+            <element signature="e#12#26#0#Twig" expanded="true" />
+            <element signature="e#180#226#0#HTML" expanded="true" />
+            <element signature="e#608#614#1#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
