@@ -1,0 +1,33 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Blogtocategory
+ *
+ * @ORM\Table(name="blogtocategory")
+ * @ORM\Entity
+ */
+class Blogtocategory
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="category-id", type="integer", nullable=false)
+     */
+    private $categoryId;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="blog-id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $blogId;
+
+
+}
+
