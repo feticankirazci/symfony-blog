@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Blog
@@ -15,28 +16,28 @@ class Blog
 {
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="excerpt", type="string", length=100, nullable=false)
      */
     private $excerpt;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="title", type="text", length=65535, nullable=false)
      */
     private $title;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="body", type="text", nullable=false)
      */
     private $body;
 
     /**
      * @var boolean
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="status", type="boolean", nullable=false)
      */
     private $status;
@@ -252,5 +253,9 @@ class Blog
         $this->blogCategories[] = $category;
     }
 
+//    public function __toString()
+//    {
+//        return $this->getCreatedAt();
+//    }
 
 }

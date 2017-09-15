@@ -1,7 +1,8 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace AppBundle\Controller\Admin;
 
+use AppBundle\Entity\Blog;
 use AppBundle\Form\BlogEntryFormType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -41,10 +42,37 @@ class BlogAdminController extends Controller
             $em->persist($blog);
             $em->flush();
 
-            return $this->redirectToRoute('admin_blog_new');
+            $this->addFlash('success', 'Entry submitted.');
+
+            return $this->redirectToRoute('admin_blog_list');
         }
 
         return $this->render(':admin/blog:new.html.twig', [
+            'blogForm' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/blog/{id}/edit", name="admin_blog_edit")
+     */
+    public function editAction(Request $request, Blog $blog)
+    {
+        $form = $this->createForm(BlogEntryFormType::class, $blog);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()){
+            $blog = $form->getData();
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($blog);
+            $em->flush();
+
+            $this->addFlash('success', 'Entry updated.');
+
+            return $this->redirectToRoute('admin_blog_list');
+        }
+
+        return $this->render(':admin/blog:edit.html.twig', [
             'blogForm' => $form->createView()
         ]);
     }

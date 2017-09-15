@@ -3,6 +3,7 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,7 +15,12 @@ class BlogEntryFormType extends AbstractType
             ->add('excerpt')
             ->add('title')
             ->add('body')
-            ->add('status')
+            ->add('status', ChoiceType::class,[
+                'choices' => [
+                    'Active' => true,
+                    'Passive' => false,
+                ]
+            ])
             ->add('createdAt')
             ->add('updatedAt')
         ;

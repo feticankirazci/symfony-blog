@@ -15,12 +15,17 @@
                     <tr>
                         <th>Title</th>
                         <th>Body</th>
+                        <th>Created At</th>
+                        <th>Updated At</th>
                         <th>&nbsp;</th>
                     </tr>
                     {% for blog in blogs %}
                         <tr>
                             <td>{{ blog.title }}</td>
                             <td>{{ blog.body }}</td>
+                            <td>{{ blog.createdAt | date("Y-m-d H:i:s") }}</td>
+                            <td>{{ blog.updatedAt | date("Y-m-d H:i:s") }}</td>
+                            <td><a href="{{ path('admin_blog_edit', {'id': blog.id}) }}" class="btn btn-xs btn-success"><span class="fa fa-pencil"></span></a></td>
                         </tr>
                     {% endfor %}
                 </table>
