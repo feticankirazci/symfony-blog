@@ -11,10 +11,9 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-    <div class="alert alert-success" id="result_message" style="display: none">
-
-    </div>
-        {% for msg in app.session.flashBag.get('success') %}
+    <div class="alert alert-success" id="result_message_success" style="display: none"></div>
+    <div class="alert alert-danger" id="result_message_danger" style="display: none"></div>
+    {% for msg in app.session.flashBag.get('success') %}
         <div class="alert alert-success" id="result_message">
             {{ msg }}
         </div>
