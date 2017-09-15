@@ -1,0 +1,15 @@
+{% extends ':admin/blog:formLayout.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>Delete Entry</h1>
+                {{ form_start(blogForm) }}
+                {{ form_widget(blogForm) }}
+                <button type="submit" class="btn btn-primary" formnovalidate>Delete</button>
+                {{ form_end(blogForm) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

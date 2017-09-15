@@ -37,7 +37,7 @@ class Blog
 
     /**
      * @var boolean
-     * @Assert\NotBlank()
+     * @Assert\NotNull()
      * @ORM\Column(name="status", type="boolean", nullable=false)
      */
     private $status;

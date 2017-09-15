@@ -4,8 +4,10 @@ namespace AppBundle\Controller\Admin;
 
 use AppBundle\Entity\Blog;
 use AppBundle\Form\BlogEntryFormType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -75,5 +77,28 @@ class BlogAdminController extends Controller
         return $this->render(':admin/blog:edit.html.twig', [
             'blogForm' => $form->createView()
         ]);
+    }
+
+    /**
+     * @Route("/deleteEntry/{id}", name="admin_blog_delete")
+     * @Method("POST")
+     */
+    public function deleteAction(Request $request, Blog $blog){
+       $em = $this->getDoctrine()->getManager();
+       $entryTitle = $blog->getTitle();
+       try{
+           $em->remove($blog);
+           $em->flush();
+           $response = [
+               "success" => true,
+               "message" => "'".$entryTitle."' titled entry has been successfully deleted."
+           ];
+       }catch (\Exception $exception){
+           $response = [
+               "success" => false,
+               "error" => $exception->getMessage()
+           ];
+       }
+       return JsonResponse::create($response);
     }
 }

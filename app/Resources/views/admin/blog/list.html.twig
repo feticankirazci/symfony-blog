@@ -20,16 +20,49 @@
                         <th>&nbsp;</th>
                     </tr>
                     {% for blog in blogs %}
-                        <tr>
+                        <tr id="blog_{{ blog.id }}">
                             <td>{{ blog.title }}</td>
                             <td>{{ blog.body }}</td>
                             <td>{{ blog.createdAt | date("Y-m-d H:i:s") }}</td>
                             <td>{{ blog.updatedAt | date("Y-m-d H:i:s") }}</td>
-                            <td><a href="{{ path('admin_blog_edit', {'id': blog.id}) }}" class="btn btn-xs btn-success"><span class="fa fa-pencil"></span></a></td>
+                            <td>
+                                <a href="{{ path('admin_blog_edit', {'id': blog.id}) }}" class="btn btn-xs btn-success"><span class="fa fa-pencil"></span></a>
+                                &nbsp;
+                                <a href="javascript:void(0)" class="btn btn-xs btn-success" onclick="deleteBlog('{{ blog.id }}','{{ blog.title }}')" ><span class="fa fa-trash"></span></a>
+                            </td>
                         </tr>
                     {% endfor %}
                 </table>
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        function deleteBlog(blogId, blogTitle) {
+            if (confirm("Are you sure that you want to delete '" + blogTitle + "' titled entry?") == true) {
+                jQuery.ajax({
+                    method: "POST",
+                    url: '/admin/deleteEntry/'+blogId,
+                    dataType: "json",
+                    success: function (responseData) {
+
+                        if (responseData.success == true) {
+                            jQuery("#result_message").html("<span>" + responseData.message + "<span>");
+                            jQuery("#result_message").show();
+                            setTimeout(function () {
+                                jQuery("#result_message").hide("slow");
+                            }, 3000);
+                            jQuery("#blog_" + blogId).hide("slow");
+                        } else {
+                            jQuery("#result_message").html("<span class='bg-danger'>" + responseData.message + "<span>");
+                            jQuery("#result_message").show();
+                            setTimeout(function () {
+                                jQuery("#result_message").hide("slow");
+                            }, 3000);
+                        }
+                    }
+                })
+            }
+        }
+
+    </script>
 {% endblock %}
