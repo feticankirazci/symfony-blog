@@ -16,15 +16,17 @@
                         <th>Body</th>
                         <th>Created At</th>
                         <th>Updated At</th>
+                        <th style="text-align: center">Category #</th>
                         <th>&nbsp;</th>
                     </tr>
                     {% for blog in blogs %}
                         <div class="row">
                             <tr id="blog_{{ blog.id }}">
                                 <td class="col-xs-1">{{ blog.title }}</td>
-                                <td class="col-xs-8">{{ blog.body }}</td>
+                                <td class="col-xs-7">{{ blog.body|slice(0,100) }}</td>
                                 <td class="col-xs-1">{{ blog.createdAt | date("Y-m-d H:i:s") }}</td>
                                 <td class="col-xs-1">{{ blog.updatedAt | date("Y-m-d H:i:s") }}</td>
+                                <td class="col-xs-1" style="text-align: center">{{ blog.blogCategories | length }}</td>
                                 <td class="col-xs-1">
                                     <a href="{{ path('admin_blog_edit', {'id': blog.id}) }}" class="btn btn-xs btn-success"><span class="fa fa-pencil"></span></a>
                                     <a href="javascript:void(0)" class="btn btn-xs btn-success" onclick="deleteBlog('{{ blog.id }}','{{ blog.title }}')" ><span class="fa fa-trash"></span></a>

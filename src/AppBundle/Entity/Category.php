@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -35,7 +36,15 @@ class Category
      */
     private $id;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Blog", mappedBy="blogCategories")
+     */
+    private $categoryBlogs;
 
+    public function __construct()
+    {
+        $this->categoryBlogs = new ArrayCollection();
+    }
 
     /**
      * Set name
@@ -94,4 +103,22 @@ class Category
     {
         return $this->id;
     }
+
+    /**
+     * @return ArrayCollection|Blog[]
+     */
+    public function getCategoryBlogs()
+    {
+        return $this->categoryBlogs;
+    }
+
+    /**
+     * @param mixed $categoryBlogs
+     */
+    public function setCategoryBlogs($categoryBlogs)
+    {
+        $this->categoryBlogs = $categoryBlogs;
+    }
+
+
 }

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ blog.title }}{% endblock %}
+
+{% block body %}
+    <h2 class="genus-name">{{ blog.title }}</h2>
+
+    <div class="sea-creature-container">
+        <div class="genus-details">
+            <dl class="genus-details-list">
+                <dt>Excerpt :</dt>
+                <dd>{{ blog.excerpt }}</dd>
+                <dt>Body :</dt>
+                <dd>{{ blog.body }}</dd>
+                <dt>Created At :</dt>
+                <dd>{{ blog.createdAt | date("Y-m-d H:i:s") }}</dd>
+                <dt>Updated At :</dt>
+                <dd>{{ blog.updatedAt | date("Y-m-d H:i:s") }}</dd>
+                <dt>Author :</dt>
+                <dd>Anonymous</dd>
+                <dt>Categories</dt>
+                <dd>
+                    <ul class="list-group">
+                        {% for blogCategories in blog.blogCategories %}
+                            <li class="list-group-item">
+                                <a href="{{ path('category_show', {
+                                    'id': blogCategories.id
+                                }) }}">
+                                    {{ blogCategories.name }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+{% endblock %}

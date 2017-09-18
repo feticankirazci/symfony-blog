@@ -22,7 +22,10 @@
                         <tr id="category_{{ category.id }}">
                             <td class="col-xs-3">{{ category.id }}</td>
                             <td class="col-xs-3">{{ category.name}}</td>
-                            <td class="col-xs-3">{{ category.status }}</td>
+                            <td class="col-xs-3">
+                                {% if category.status == 1 %} 1 {% endif %}
+                                {% if category.status == 0 %} 0 {% endif %}
+                            </td>
                             <td class="col-xs-1">
                                 <a href="{{ path('admin_category_edit', {'id': category.id}) }}" class="btn btn-xs btn-success"><span class="fa fa-pencil"></span></a>
                                 <a href="javascript:void(0)" class="btn btn-xs btn-success" onclick="deleteCategory('{{ category.id }}','{{ category.name }}')" ><span class="fa fa-trash"></span></a>
@@ -61,7 +64,7 @@
                     }
                 })
             }
-        }
+        }h
 
     </script>
 {% endblock %}

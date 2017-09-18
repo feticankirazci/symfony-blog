@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+    <h1>Entries</h1>
+
+    <table class="table table-striped">
+        <tr>
+            <th>Title</th>
+            <th>Body</th>
+            <th>Created At</th>
+            <th>Updated At</th>
+            <th style="text-align: center">Category #</th>
+        </tr>
+        {% for blog in blogs %}
+            <div class="row">
+                <tr id="blog_{{ blog.id }}">
+                    <td class="col-xs-1"><a href="{{ path('entry_show', {'id': blog.id}) }}">{{ blog.title }}</a></td>
+                    <td class="col-xs-7">{{ blog.body|slice(0,100) }}</td>
+                    <td class="col-xs-1">{{ blog.createdAt | date("Y-m-d H:i:s") }}</td>
+                    <td class="col-xs-1">{{ blog.updatedAt | date("Y-m-d H:i:s") }}</td>
+                    <td class="col-xs-1" style="text-align: center">{{ blog.blogCategories | length }}</td>
+                </tr>
+            </div>
+        {% endfor %}
+    </table>
+    </div>
+{% endblock %}

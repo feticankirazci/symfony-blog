@@ -66,10 +66,16 @@ class Blog
     private $id;
 
     /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Category")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Category", inversedBy="categoryBlogs")
      * @ORM\JoinTable(name="blog_category")
      */
     private $blogCategories;
+
+//    /**
+//     * @var string
+//     * @ORM\Column(name="slug" , type="string" , nullable=false , unique=true)
+//     */
+//    private $slug;
 
     public function __construct()
     {
@@ -231,7 +237,7 @@ class Blog
     }
 
     /**
-     * @return mixed
+     * @return ArrayCollection|Category[]
      */
     public function getBlogCategories()
     {
@@ -253,9 +259,20 @@ class Blog
         $this->blogCategories[] = $category;
     }
 
-//    public function __toString()
+//    /**
+//     * @return mixed
+//     */
+//    public function getSlug()
 //    {
-//        return $this->getCreatedAt();
+//        return $this->slug;
+//    }
+//
+//    /**
+//     * @param mixed $slug
+//     */
+//    public function setSlug($slug)
+//    {
+//        $this->slug = $slug;
 //    }
 
 }

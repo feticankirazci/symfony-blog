@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ category.name }}{% endblock %}
+
+{% block body %}
+    <h2 class="genus-name">{{ category.name }}</h2>
+
+    <div class="sea-creature-container">
+        <div class="genus-details">
+            <dl class="genus-details-list">
+                <dt>Status :</dt>
+                <dd>{% if category.status == 1 %} 1 {% endif %}
+                    {% if category.status == 0 %} 0 {% endif %}
+                </dd>
+                <dt>Entries</dt>
+                <dd>
+                    <ul class="list-group">
+                        {% for categoryBlogs in category.categoryBlogs %}
+                            <li class="list-group-item">
+                                <a href="{{ path('entry_show', {
+                                    'id': categoryBlogs.id
+                                }) }}">
+                                    {{ categoryBlogs.title }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+{% endblock %}
