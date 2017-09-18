@@ -11,6 +11,18 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+    <header>
+        <ul class="navi">
+        {% if is_granted('ROLE_USER') %}
+            <li><a href="{{ path('logout') }}">Logout</a></li>
+            <li><a href="{{ path('admin_blog_new') }}">Add Entry</a></li>
+            <li><a href="{{ path('admin_category_new') }}">Add Category</a></li>
+            <li><a href="{{ path('admin_blog_list') }}">List Entries</a></li>
+        {% else %}
+            <li><a href="{{ path('login') }}">Login</a></li>
+        {% endif %}
+        </ul>
+    </header>
     <div class="alert alert-success" id="result_message_success" style="display: none"></div>
     <div class="alert alert-danger" id="result_message_danger" style="display: none"></div>
     {% for msg in app.session.flashBag.get('success') %}
