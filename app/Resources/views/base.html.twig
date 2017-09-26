@@ -7,29 +7,50 @@
             <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
             <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
             <link rel="stylesheet" href="{{ asset('vendor/fontawesome/css/font-awesome.min.css') }}">
+            <style>
+                .arc-text {
+                    font: 12px sans-serif;
+                }
+
+                .arc-center {
+                    fill: none;
+                }
+
+                #credit {
+                    float: right;
+                }
+
+                #credit a {
+                    color: inherit;
+                }
+
+            </style>
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+    <div class="alert alert-success" id="result_message_success" style="display: none"></div>
+    <div class="alert alert-danger" id="result_message_danger" style="display: none"></div>
+    <div id="credit"></div>
+    {% for msg in app.session.flashBag.get('success') %}
+        <div class="alert alert-success" id="result_message">
+            {{ msg }}
+        </div>
+    {% endfor %}
     <header>
         <ul class="navi">
-        {% if is_granted('ROLE_USER') %}
-            <li><a href="{{ path('logout') }}">Logout</a></li>
+        {% if is_granted('ROLE_ADMIN') %}
             <li><a href="{{ path('admin_blog_new') }}">Add Entry</a></li>
             <li><a href="{{ path('admin_category_new') }}">Add Category</a></li>
             <li><a href="{{ path('admin_blog_list') }}">List Entries</a></li>
+            <li><a href="{{ path('admin_category_list') }}">List Categories</a></li>
+            <li><a href="{{ path('logout') }}">Logout</a></li>
         {% else %}
             <li><a href="{{ path('login') }}">Login</a></li>
         {% endif %}
         </ul>
     </header>
-    <div class="alert alert-success" id="result_message_success" style="display: none"></div>
-    <div class="alert alert-danger" id="result_message_danger" style="display: none"></div>
-    {% for msg in app.session.flashBag.get('success') %}
-        <div class="alert alert-success" id="result_message">
-            {{ msg }}
-        </div>
-        {% endfor %}
+
         {% block body %}{% endblock %}
         {% block javascripts %}
             <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>

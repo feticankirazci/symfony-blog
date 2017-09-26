@@ -3,19 +3,17 @@
 namespace AppBundle\Security;
 
 use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationException;
 use Symfony\Component\Security\Core\Security;
-use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Guard\AbstractGuardAuthenticator;
+
 class CustomLoginAuthenticator extends AbstractGuardAuthenticator
 {
     /**
@@ -60,8 +58,8 @@ class CustomLoginAuthenticator extends AbstractGuardAuthenticator
     {
         $request->getSession()->set(Security::AUTHENTICATION_ERROR, $exception);
         $url = $this->router->generate("login");
-        var_dump($exception->getMessage());exit;
-//        return new RedirectResponse($url);
+//        var_dump($exception->getMessage());exit;
+        return new RedirectResponse($url);
     }
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
     {
